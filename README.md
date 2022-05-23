@@ -1,4 +1,4 @@
-# Pub-Sub Dapr Container Apps in Azure
+# Pub-Sub using Dapr with Azure Container Apps and Service Bus
 
 > Learning Azure Container Apps
 
