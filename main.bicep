@@ -13,7 +13,6 @@ module servicebus 'modules/servicebus.bicep' = {
   scope: resourceGroup
   name: '${deployment().name}-servicebus'
   params: {
-    authName: 'auth'
     name: 'dapr-pubsub${uniqueString(resourceGroup.id)}'
     location: location
   }

@@ -1,5 +1,4 @@
 param name string
-param authName string
 param location string = resourceGroup().location
 
 resource servicebus 'Microsoft.ServiceBus/namespaces@2021-11-01' = {
