@@ -2,7 +2,12 @@
 
 > Learning Azure Container Apps
 
-This repo contains code to deploy the [Dapr pub-sub application](https://github.com/dapr/quickstarts/tree/master/tutorials/pub-sub) on [Azure Container Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview) with [Dapr](https://dapr.io/) using Azure Service Bus for handling publisher and subscriber (Pub-Sub) functionality. The application consists of a React web frontend, a Python subscriber component and a Node subscriber component.
+- 📂 This repo contains code to deploy the [Dapr pub-sub application](https://github.com/dapr/quickstarts/tree/master/tutorials/pub-sub) on [Azure Container Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview) using [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) for handling publisher and subscriber (Pub-Sub) functionality. 
+
+- 💻 The application consists of a React web frontend, a Python subscriber component and a Node subscriber component.
+
+- :tophat: Since we use [Dapr](https://dapr.io) we can replace Redis (as used in the [application quickstart](https://github.com/dapr/quickstarts/tree/master/tutorials/pub-sub)) with Azure Service Bus without _any_ changes to the application code. In fact, we change both the environment the apps run in from local containers or Kubernetes to Azure Container Apps _and_ the message broker without modifying the applications themselves! _Portable microservices_ FTW!
+
 
 ### Technologies
 
@@ -12,10 +17,8 @@ This repo contains code to deploy the [Dapr pub-sub application](https://github.
 
 ### Overview
 
-> TODO: update diagram. Redis -> Azure Service Bus
-
 ![diagram](static/Local_Architecture_Diagram.png)
-([diagram by Dapr](https://docs.microsoft.com/en-us/azure/container-apps/microservices-dapr-azure-resource-manager?tabs=powershell&pivots=container-apps-bicep#prerequisites) - [Apache 2.0](https://github.com/dapr/quickstarts/blob/master/LICENSE))
+([modified diagram, original by Dapr](https://github.com/dapr/quickstarts/blob/master/tutorials/pub-sub/img/Local_Architecture_Diagram.png) - [Apache 2.0](https://github.com/dapr/quickstarts/blob/master/LICENSE))
 
 ## Usage
 
@@ -32,6 +35,8 @@ This repo contains code to deploy the [Dapr pub-sub application](https://github.
     - Az Pwsh: `Set-AzContext -SubscriptionName <subscription name>`
     - az cli (optional): `az account set --name <subscription name>`
 6. Register resource provider: `Register-AzResourceProvider -ProviderNamespace Microsoft.App`
+
+**Note:** `az` and the `containerapp` extension is not strictly necessary, but it has some [very nice features for interacting with container apps](https://docs.microsoft.com/en-us/cli/azure/containerapp?view=azure-cli-latest&preserve-view=true) that is worth checking out.
 
 ### Deploy
 
@@ -120,7 +125,7 @@ Example output:
 ]
 ```
 
-:heavy_check_mark: As noted the messages on topic A is received by both the node and python-subscriber, while B is only received by the node-subscriber and C is only received by the python-subscriber. All without any direct coupling between the publisher service and the subscriber services!
+:heavy_check_mark: As noted the messages on topic A is received by both the node and python-subscriber, while B is only received by the node-subscriber and C is only received by the python-subscriber. All without any direct coupling between the publisher service and the subscriber services! Loosely coupled? ;)
 
 This is a _very simple_ explanation of how [Service Bus topics works](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview#topics), but feel free to read more about [architectural considerations around Pub-Sub architecture](https://docs.microsoft.com/en-us/azure/architecture/patterns/publisher-subscriber)!
 
@@ -132,3 +137,7 @@ The deployed resources will not incur large costs, but to clean everything up ru
 ```powershell
 Remove-AzResourceGroup -Name dapr-pubsub-containerapps-demo -Force
 ```
+
+## License
+
+[Apache License 2.0](LICENSE)
