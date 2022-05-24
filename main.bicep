@@ -19,13 +19,21 @@ module servicebus 'modules/servicebus.bicep' = {
   }
 }
 
-
-module containerApps 'modules/containerapp.bicep' = {
+module containerEnvironment 'modules/environment.bicep' = {
   scope: resourceGroup
-  name: '${deployment().name}-apps'
+  name: '${deployment().name}-env'
   params: {
     containerEnvironmentName: containerEnvironmentName
     location: location
+  }
+}
+
+module containerApps 'modules/apps.bicep' = {
+  scope: resourceGroup
+  name: '${deployment().name}-apps'
+  params: {
+    location: location
+    environmentName: containerEnvironment.outputs.environmentName
     serviceBusName: servicebus.outputs.name
   }
 }
