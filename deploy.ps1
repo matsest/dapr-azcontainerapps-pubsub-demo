@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $params = @{
-    Name                     = "dapr-pubsub-containerapp$(Get-Date -Format "yyMMdd-HHmm")"
+    Name                     = "dapr-pubsub-$(Get-Date -Format "yyMMdd-HHmm")"
     Location                 = "canadacentral"
     TemplateFile             = "main.bicep"
     rgName                   = "dapr-pubsub-containerapps-demo"
