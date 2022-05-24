@@ -8,11 +8,9 @@
 
 - :tophat: Since we use [Dapr](https://dapr.io) we can replace Redis (as used in the [application quickstart](https://github.com/dapr/quickstarts/tree/master/tutorials/pub-sub)) with Azure Service Bus without _any_ changes to the application code. In fact, we change both the environment the apps run in from local containers or Kubernetes to Azure Container Apps _and_ the message broker without modifying the applications themselves! _Portable microservices_ FTW!
 
+### Tools
 
-### Technologies
-
-- :hammer: Azure PowerShell and AZ CLI for interaction with Azure
-- :gear: PowerShell for deployment script
+- :hammer: Azure PowerShell for deployment
 - :muscle: Bicep for Infrastructure as Code
 
 ### Overview
