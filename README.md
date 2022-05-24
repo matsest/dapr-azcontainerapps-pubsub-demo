@@ -22,19 +22,12 @@
 
 ### Prerequisites
 
-1. [Install/update Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=latest)
-2. [Install/update Azure CLI (optional)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-    - Install `containerapp` extension: `az extension add --name containerapp --upgrade` (as of May 2022 this is not available in Azure PowerShell)
+1. Contributor (or higher) permissions on an Azure subscription
+2. [Install/update Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=latest)
 3. [Install/update Bicep CLI](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install#install-manually=)
-4. Connect to Azure:
-    - Az Pwsh: `Connect-AzAccount`
-    - az cli (optional): `az login`
-5. Set Context:
-    - Az Pwsh: `Set-AzContext -SubscriptionName <subscription name>`
-    - az cli (optional): `az account set --name <subscription name>`
+4. Connect to Azure: `Connect-AzAccount`
+5. Set Context: `Set-AzContext -SubscriptionName <subscription name>`
 6. Register resource provider: `Register-AzResourceProvider -ProviderNamespace Microsoft.App`
-
-**Note:** `az` and the `containerapp` extension is not strictly necessary, but it has some [very nice features for interacting with container apps](https://docs.microsoft.com/en-us/cli/azure/containerapp?view=azure-cli-latest&preserve-view=true) that is worth checking out.
 
 ### Deploy
 
