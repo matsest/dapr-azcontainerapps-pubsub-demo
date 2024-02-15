@@ -23,8 +23,8 @@
 ### Prerequisites
 
 1. Contributor (or higher) permissions on an Azure subscription
-2. [Install/update Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=latest)
-3. [Install/update Bicep CLI](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install#install-manually=)
+2. [Install/update Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=latest) (Tested with Az 6.15.0)
+3. [Install/update Bicep CLI](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install#install-manually=) (Tested with 0.25.53)
 4. Connect to Azure: `Connect-AzAccount`
 5. Set Context: `Set-AzContext -SubscriptionName <subscription name>`
 6. Register resource provider: `Register-AzResourceProvider -ProviderNamespace Microsoft.App`
@@ -61,6 +61,7 @@ C: Hello to my C-topic fans!              # this topic will only be received by 
 
 ### Verify messages in subscribers
 
+> 💡 Note that it might take 5-10 minutes after initial deployment before logs from the container apps is available in the workspace.
 
 1. View logs from both subscriber services:
 

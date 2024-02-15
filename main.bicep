@@ -4,7 +4,7 @@ param rgName string
 param location string
 param containerEnvironmentName string
 
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource resourceGroup 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   name: rgName
   location: location
 }

@@ -4,7 +4,7 @@ param location string = resourceGroup().location
 param dateNow string = utcNow()
 
 // Existing
-resource environment 'Microsoft.App/managedEnvironments@2022-03-01' existing = {
+resource environment 'Microsoft.App/managedEnvironments@2023-05-01' existing = {
   name: environmentName
 }
 
@@ -20,7 +20,7 @@ resource sbAuth 'Microsoft.ServiceBus/namespaces/AuthorizationRules@2021-11-01' 
 
 
 // Resources
-resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-03-01' = {
+resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2023-05-01' = {
     name: 'pubsub'
     parent: environment
     properties: {
@@ -48,7 +48,7 @@ resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-03
     }
   }
 
-resource nodeapp 'Microsoft.App/containerApps@2022-03-01' = {
+resource nodeapp 'Microsoft.App/containerApps@2023-05-01' = {
   name: 'node-subscriber'
   location: location
   properties: {
@@ -67,7 +67,7 @@ resource nodeapp 'Microsoft.App/containerApps@2022-03-01' = {
           image: 'ghcr.io/dapr/samples/pubsub-node-subscriber:latest'
           name: 'node-subscriber'
           resources: {
-            cpu: '0.5'
+            cpu: json('0.5')
             memory: '1.0Gi'
           }
         }
@@ -81,7 +81,7 @@ resource nodeapp 'Microsoft.App/containerApps@2022-03-01' = {
   }
 }
 
-resource pythonapp 'Microsoft.App/containerApps@2022-03-01' = {
+resource pythonapp 'Microsoft.App/containerApps@2023-05-01' = {
   name: 'python-subscriber'
   location: location
   properties: {
@@ -100,7 +100,7 @@ resource pythonapp 'Microsoft.App/containerApps@2022-03-01' = {
           image: 'ghcr.io/dapr/samples/pubsub-python-subscriber:latest'
           name: 'python-subscriber'
           resources: {
-            cpu: '0.5'
+            cpu: json('0.5')
             memory: '1.0Gi'
           }
         }
@@ -114,7 +114,7 @@ resource pythonapp 'Microsoft.App/containerApps@2022-03-01' = {
   }
 }
 
-resource reactapp 'Microsoft.App/containerApps@2022-03-01' = {
+resource reactapp 'Microsoft.App/containerApps@2023-05-01' = {
   name: 'react-form'
   location: location
   properties: {
@@ -137,7 +137,7 @@ resource reactapp 'Microsoft.App/containerApps@2022-03-01' = {
           image: 'ghcr.io/dapr/samples/pubsub-react-form:latest'
           name: 'react-form'
           resources: {
-            cpu: '0.5'
+            cpu: json('0.5')
             memory: '1.0Gi'
           }
         }
